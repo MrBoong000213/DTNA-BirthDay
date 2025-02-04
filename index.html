@@ -103,7 +103,7 @@
     <div class="envelope-container">
         <div class="envelope" onclick="toggleEnvelope(event)">
             <div class="flap"></div>
-            <div class="message" id="message">Happy Birthday, my love! 🎂❤️ Wishing you a day filled with happiness and love!</div>
+            <div class="message" id="message"></div>
         </div>
         <div id="countdown"></div>
     </div>
@@ -126,6 +126,17 @@
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
             document.getElementById('countdown').innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds to your day`;
+
+            let messages = [
+                "Counting down to your special day! 🎉",
+                "Almost there! Your special day is coming! 🎁",
+                "Just a few days left, can't wait! 💖",
+                "One more day! Get ready for an amazing birthday! 🎊",
+                "Happy Birthday, my love! 🎂🥳" 
+            ];
+
+            let message = days > 10 ? messages[0] : days > 5 ? messages[1] : days > 1 ? messages[2] : days === 1 ? messages[3] : messages[4];
+            document.getElementById('message').innerHTML = message;
         }
         
         function showHearts(event) {
