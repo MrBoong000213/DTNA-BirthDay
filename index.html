@@ -107,12 +107,22 @@
         </div>
         <div id="countdown"></div>
     </div>
+    <audio id="song" src="song.mp3"></audio>
     <div class="hearts" id="hearts-container"></div>
     
     <script>
         function toggleEnvelope(event) {
             event.stopPropagation(); // Prevent triggering body click event
-            document.querySelector('.envelope').classList.toggle('open');
+            const envelope = document.querySelector('.envelope');
+            envelope.classList.toggle('open');
+            
+            const song = document.getElementById('song');
+            if (envelope.classList.contains('open')) {
+                song.play();
+            } else {
+                song.pause();
+                song.currentTime = 0;
+            }
         }
         
         function updateCountdown() {
